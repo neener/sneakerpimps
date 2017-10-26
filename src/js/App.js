@@ -36,17 +36,17 @@ var App = function(){
 
 App.prototype.makeWater = function(){
 
-   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/landingpageengine.png' );
+   var waterNormals = new THREE.ImageUtils.loadTexture( '/textures/world.jpg' );
        waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping; 
 
    this.water = new THREE.Water( this.renderer, this.camera, this.scene, {
 		textureWidth: 1024, 
 		textureHeight: 1024,
 		waterNormals: waterNormals,
-		alpha: 0.5,
+		alpha: 0.3,
 		sunDirection: this.pointLight.position.normalize(),
-		sunColor: 0x0033CC,
-		waterColor: 0x029ABA,
+		sunColor: 0xFFFFFF,
+		waterColor: 0x001e0f,
 		distortionScale: 50,
 	});
    
@@ -75,7 +75,7 @@ App.prototype.makeEnvironment = function(){
     this.cubeMap.format = THREE.RGBFormat;
 
 
-    this.loader.load( 'textures/lilwhite.jpg', (function ( image ) {
+    this.loader.load( 'textures/black.jpg', (function ( image ) {
       		var getSide = function ( x, y ) {
 	   			var size = 1024;
 	   			var canvas = document.createElement( 'canvas' );
@@ -211,7 +211,7 @@ App.prototype.addLyrics = function(){
 
 App.prototype.init = function(){
 	var self = this;
-	
+
 	window.addEventListener('resize', function(){
 		if(window.innerWidth < 840) self.camera.position.set( 10, 120, 0 );
 		if(window.innerWidth < 530) self.camera.position.set( 20, 140, 0 );
